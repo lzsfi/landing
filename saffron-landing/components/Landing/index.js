@@ -18,9 +18,14 @@ function Landing() {
                 customize their risk and return profiles via the use of SFI pool
                 tranches.
               </Subtitle>
-              <Button>Enter App</Button>{" "}
+              <Button>Launch App</Button>{" "}
               <Button alternative>Documentation</Button>
             </TextWrapper>
+            <StatWrapper>
+              <Subtitle mr>Total Staked <Stat>$120,232,32.21</Stat></Subtitle>
+              <Subtitle mr>Total Staked <Stat>$120,232,32.21</Stat></Subtitle>
+              <Subtitle>Total Staked <Stat>$120,232,32.21</Stat></Subtitle>
+            </StatWrapper>
           </InfoColumn>
           <InfoColumn>
             <ImgWrapper>
@@ -68,9 +73,11 @@ const InfoColumn = styled.div`
 
 const TextWrapper = styled.div`
   width: 650px;
-  padding-top: 0;
-  padding-bottom: 60px;
-  justify-content: flex-end;
+`;
+
+const StatWrapper = styled.div`
+  display: flex;
+  padding-top: 58px;
 `;
 
 const ImgWrapper = styled.div`
@@ -101,7 +108,19 @@ const Subtitle = styled.p`
   font-size: 16px;
   line-height: 24px;
   color: #0f1621;
+  ${(props) =>
+    props.mr &&
+    css`
+      padding-right: 130px;
+  `}
 `;
+
+const Stat = styled.span`
+    line-height: 35px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #c44536;
+`
 
 const Button = styled.button`
   background-color: #c44536;

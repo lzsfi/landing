@@ -12,17 +12,17 @@ function Navbar() {
           <Image src={Icon} />
           <SaffronText>saffron</SaffronText>
           <Navigation>
-            <NavItem>Link</NavItem>
-            <NavItem>Link</NavItem>
-            <NavItem>Link</NavItem>
-            <NavItem>Link</NavItem>
+            <NavItem>Governance</NavItem>
+            <NavItem>Vote</NavItem>
+            <NavItem>Academy</NavItem>
+            <NavItem>Whitepaper</NavItem>
           </Navigation>
         </Items>
         <Items>
           <NavItem>
             $621.04 <Span>3.41%</Span>
           </NavItem>
-          <Button>Button</Button>
+          <Button>Launch App</Button>
         </Items>
       </NavbarItems>
     </Container>
