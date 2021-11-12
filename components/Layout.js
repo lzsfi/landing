@@ -20,7 +20,6 @@ export default function Layout({ children }) {
         <meta property="og:description" content="" />
         <link rel="stylesheet" href="https://use.typekit.net/cgn3hnk.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
           href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&display=swap"
           rel="stylesheet"
