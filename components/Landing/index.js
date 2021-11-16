@@ -1,35 +1,79 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 import styled, { css } from "styled-components";
-import Image from 'next/image'
+import Image from "next/image";
 
-import SFI from "../../public/sfilanding.svg"
+import SFI from "../../public/sfilanding.svg";
 
 function Landing() {
+  const [tvl, setTVL] = useState("");
+  const [sfiEth, setSfiEth] = useState("");
+
+  const getData = () => {
+    Axios.get("https://mainnet-api.saffron.finance/v2/pools").then(
+      (response) => {
+        setTVL(
+          "$" +
+            response.data.stakingPools[0].tvlUsd
+            // response.data.stakingPools[1].tvlUsd +
+            // response.data.stakingPools[2].tvlUsd +
+            // response.data.stakingPools[3].tvlUsd +
+            // response.data.stakingPools[4].tvlUsd +
+            // response.data.stakingPools[5].tvlUsd
+        );
+        setSfiEth(
+          "$" +
+            response.data.stakingPools[0].tvlUsd
+            // response.data.stakingPools[1].tvlUsd +
+            // response.data.stakingPools[2].tvlUsd +
+            // response.data.stakingPools[3].tvlUsd +
+            // response.data.stakingPools[4].tvlUsd +
+            // response.data.stakingPools[5].tvlUsd
+        );
+      }
+      
+    );
+  };
+
+  getData();
+
   return (
     <InfoSec>
       <Container>
         <InfoRow>
           <InfoColumn>
             <TextWrapper>
-              <Heading>A Customized <br/> Risk/Return Protocol</Heading>
+              <Heading>
+                A Customized <br /> Risk/Return Protocol
+              </Heading>
               <Subtitle>
                 Saffron Finance is a peer to peer risk exchange protocol. The
                 protocol allows its users (i.e. liquidity providers) to
                 customize their risk and return profiles via the use of SFI pool
                 tranches.
               </Subtitle>
-              <Button>Launch App</Button>{" "}
-              <Button alternative>Documentation</Button>
+              <A href="https://app.saffron.finance/" target="_blank">
+                <Button>Launch App</Button>{" "}
+              </A>
+              <A href="https://docs.saffron.finance/" target="_blank">
+                <Button alternative>Documentation</Button>
+              </A>
             </TextWrapper>
             <StatWrapper>
-              <Subtitle mr>Total Staked <Stat>$120,232,32.21</Stat></Subtitle>
-              <Subtitle mr>Total Staked <Stat>$120,232,32.21</Stat></Subtitle>
-              <Subtitle>Total Staked <Stat>$120,232,32.21</Stat></Subtitle>
+              <Subtitle mr>
+                TVL <Stat>{tvl}</Stat>
+              </Subtitle>
+              <Subtitle mr>
+                Total Staked <Stat>$120,232,32.21</Stat>
+              </Subtitle>
+              <Subtitle>
+                Total Staked <Stat>$120,232,32.21</Stat>
+              </Subtitle>
             </StatWrapper>
           </InfoColumn>
           <InfoColumn>
             <ImgWrapper>
-              <Image src={SFI}/>
+              <Image src={SFI} />
             </ImgWrapper>
           </InfoColumn>
         </InfoRow>
@@ -70,14 +114,18 @@ const InfoColumn = styled.div`
   }
 `;
 
-
 const TextWrapper = styled.div`
   width: 650px;
 `;
 
+const A = styled.a``;
+
 const StatWrapper = styled.div`
   display: flex;
   padding-top: 58px;
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 const ImgWrapper = styled.div`
@@ -88,11 +136,10 @@ const ImgWrapper = styled.div`
   @media screen and (max-width: 1200px) {
     display: none;
   }
-`
-
+`;
 
 const Heading = styled.h1`
-  width: 540px; 
+  width: 540px;
   margin-bottom: 42px;
   font-size: 48px;
   line-height: 1.2;
@@ -112,15 +159,15 @@ const Subtitle = styled.p`
     props.mr &&
     css`
       padding-right: 130px;
-  `}
+    `}
 `;
 
 const Stat = styled.span`
-    line-height: 35px;
-    font-size: 18px;
-    font-weight: 500;
-    color: #c44536;
-`
+  line-height: 35px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #c44536;
+`;
 
 const Button = styled.button`
   background-color: #c44536;
@@ -143,5 +190,3 @@ const Button = styled.button`
       margin-left: 25px;
     `}
 `;
-
-

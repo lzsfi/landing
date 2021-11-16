@@ -12,21 +12,31 @@ import Medium from "../../public/medium.svg"
 function Footer() {
   return (
     <Container>
-      <Icon>
-        <Image src={Discord} />
-      </Icon>
-      <Icon>
-        <Image src={Twitter} />
-      </Icon>
-      <Icon>
-        <Image src={Telegram} />
-      </Icon>
-      <Icon>
-        <Image src={Github} />
-      </Icon>
-      <Icon>
-        <Image src={Medium} />
-      </Icon>
+      <A href="https://discord.com/invite/pDXpXKY" target="_blank">
+        <Icon>
+          <Image src={Discord} />
+        </Icon>
+      </A>
+      <A href="https://twitter.com/saffronfinance_" target="_blank">
+        <Icon>
+          <Image src={Twitter} />
+        </Icon>
+      </A>
+      <A href="https://t.me/saffronfinance" target="_blank">
+        <Icon>
+          <Image src={Telegram} />
+        </Icon>
+      </A>
+      <A href="https://github.com/saffron-finance/saffron" target="_blank">
+        <Icon>
+          <Image src={Github} />
+        </Icon>
+      </A>
+      <A href="https://medium.com/saffron-finance" target="_blank">
+        <Icon>
+          <Image src={Medium} />
+        </Icon>
+      </A>
     </Container>
   );
 }
@@ -53,4 +63,9 @@ right:0;
 const Icon = styled.div`
 padding-right: 15px;
 padding-left: 15px;
+&:hover {
+  opacity: 0.8;
+}
 `
+
+const A = styled.a``

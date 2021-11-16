@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
+import Link from 'next/link'
+import Axios from "axios";
 import Image from "next/image";
 
 import Icon from "../../public/saffron.svg";
 
+// data.saffron-finance.usd
+
 function Navbar() {
+  const [sfi, setSfi] = useState("");
+
+  const getSfi = () => {
+    Axios.get(
+      "https://api.coingecko.com/api/v3/simple/price?ids=saffron-finance&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true"
+    ).then((response) => {
+      console.log(response);
+      setSfi("$" + response.data["saffron-finance"].usd);
+    });
+  };
+
+  getSfi()
+
   return (
     <Container>
       <NavbarItems>
@@ -12,17 +29,25 @@ function Navbar() {
           <Image src={Icon} />
           <SaffronText>saffron</SaffronText>
           <Navigation>
+            <A href="https://gov.saffron.finance/" target="_blank">
             <NavItem>Governance</NavItem>
+            </A>
+            <A href="https://vote.saffron.finance/#/" target="_blank">
             <NavItem>Vote</NavItem>
+            </A>
+            <A href="https://docs.saffron.finance/saffron-finance/saffron-academy" target="_blank">
             <NavItem>Academy</NavItem>
+            </A>
+            <A href="https://docs.saffron.finance/saffron-finance/whitepaper" target="_blank">
             <NavItem>Whitepaper</NavItem>
+            </A>
           </Navigation>
         </Items>
         <Items>
-          <NavItem>
-            $621.04 <Span>3.41%</Span>
-          </NavItem>
-          <Button>Launch App</Button>
+          <Price>{sfi}</Price>
+          <A href="https://app.saffron.finance/" target="_blank">
+            <Button>Launch App</Button>
+          </A>
         </Items>
       </NavbarItems>
     </Container>
@@ -34,8 +59,6 @@ export default Navbar;
 // styles
 
 const SaffronText = styled.div`
-  cursor: default;
-  user-select: none;
   margin-left: 10px;
   font-size: 22px;
   color: #0f1621;
@@ -54,14 +77,17 @@ const Container = styled.div`
 
 const NavbarItems = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 1200px) {
+    margin-left: 25px;
+    margin-right: 25px
+  }
 `;
 
 const Items = styled.div`
   display: flex;
-  justify-content: flex-start;
+  flex-direction: row;
   align-items: center;
   height: 50px;
 `;
@@ -69,22 +95,27 @@ const Items = styled.div`
 const Navigation = styled.div`
   margin-left: 56px;
   display: flex;
+  @media screen and (max-width: 850px) {
+    display: none;
+  }
 `;
 
 const NavItem = styled.div`
   color: #0f1621;
-  cursor: pointer;
   font-weight: 500;
   margin-right: 31px;
+  &:hover {
+    color: #c44536;
+  }
 `;
 
-const Span = styled.span`
-  background-color: #16c784;
-  border-radius: 5px;
-  font-size: 15px;
-  color: white;
-  padding: 5px 5px 5px 5px;
+const Price = styled.div`
+  color: #0f1621;
+  font-weight: 500;
+  margin-right: 15px;
 `;
+
+const A = styled.a``
 
 const Button = styled.button`
   background-color: #0f1621;
