@@ -6,29 +6,18 @@ import Image from "next/image";
 import SFI from "../../public/sfilanding.svg";
 
 function Landing() {
-  const [tvl, setTVL] = useState("");
-  const [sfiEth, setSfiEth] = useState("");
+  const [tvl, setTVL] = useState();
 
   const getData = () => {
     Axios.get("https://mainnet-api.saffron.finance/v2/pools").then(
       (response) => {
         setTVL(
-          "$" +
-            response.data.stakingPools[0].tvlUsd
-            // response.data.stakingPools[1].tvlUsd +
-            // response.data.stakingPools[2].tvlUsd +
-            // response.data.stakingPools[3].tvlUsd +
-            // response.data.stakingPools[4].tvlUsd +
-            // response.data.stakingPools[5].tvlUsd
-        );
-        setSfiEth(
-          "$" +
-            response.data.stakingPools[0].tvlUsd
-            // response.data.stakingPools[1].tvlUsd +
-            // response.data.stakingPools[2].tvlUsd +
-            // response.data.stakingPools[3].tvlUsd +
-            // response.data.stakingPools[4].tvlUsd +
-            // response.data.stakingPools[5].tvlUsd
+            parseInt(response.data.stakingPools[0].tvlUsd) +
+            parseInt(response.data.stakingPools[1].tvlUsd) +
+            parseInt(response.data.stakingPools[2].tvlUsd) +
+            parseInt(response.data.stakingPools[3].tvlUsd) +
+            parseInt(response.data.stakingPools[4].tvlUsd) +
+            parseInt(response.data.stakingPools[5].tvlUsd)
         );
       }
       
@@ -61,7 +50,7 @@ function Landing() {
             </TextWrapper>
             <StatWrapper>
               <Subtitle mr>
-                TVL <Stat>{tvl}</Stat>
+                TVL <Stat>${tvl.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</Stat>
               </Subtitle>
               <Subtitle mr>
                 Total Staked <Stat>$120,232,32.21</Stat>

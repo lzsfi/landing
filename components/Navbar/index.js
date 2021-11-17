@@ -62,7 +62,7 @@ const SaffronText = styled.div`
   margin-left: 10px;
   font-size: 22px;
   color: #0f1621;
-  font-weight: normal;
+  font-weight: 600;
 `;
 
 const Container = styled.div`
@@ -102,7 +102,7 @@ const Navigation = styled.div`
 
 const NavItem = styled.div`
   color: #0f1621;
-  font-weight: 500;
+  font-weight: 400;
   margin-right: 31px;
   &:hover {
     color: #c44536;
