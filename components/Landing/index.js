@@ -50,7 +50,8 @@ function Landing() {
             </TextWrapper>
             <StatWrapper>
               <Subtitle mr>
-                TVL <Stat>${tvl.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</Stat>
+                TVL <Stat>${tvl}</Stat>
+                {/* .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") */}
               </Subtitle>
               <Subtitle mr>
                 Total Staked <Stat>$120,232,32.21</Stat>
