@@ -7,17 +7,21 @@ import SFI from "../../public/sfilanding.svg";
 
 function Landing() {
   const [tvl, setTVL] = useState();
+  const [apr, setAPR] = useState();
 
   const getData = () => {
     Axios.get("https://mainnet-api.saffron.finance/v2/pools").then(
       (response) => {
         setTVL(
-            parseInt(response.data.stakingPools[0].tvlUsd) +
-            parseInt(response.data.stakingPools[1].tvlUsd) +
-            parseInt(response.data.stakingPools[2].tvlUsd) +
-            parseInt(response.data.stakingPools[3].tvlUsd) +
-            parseInt(response.data.stakingPools[4].tvlUsd) +
-            parseInt(response.data.stakingPools[5].tvlUsd)
+            response.data.stakingPools[0].tvlUsd +
+            response.data.stakingPools[1].tvlUsd +
+            response.data.stakingPools[2].tvlUsd +
+            response.data.stakingPools[3].tvlUsd +
+            response.data.stakingPools[4].tvlUsd +
+            response.data.stakingPools[5].tvlUsd
+        );
+        setAPR(
+            parseInt(response.data.stakingPools[1].apr)
         );
       }
       
@@ -54,7 +58,7 @@ function Landing() {
                 {/* .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") */}
               </Subtitle>
               <Subtitle mr>
-                Total Staked <Stat>$120,232,32.21</Stat>
+                SFI/ETH APR <Stat>{apr}%</Stat>
               </Subtitle>
               <Subtitle>
                 Total Staked <Stat>$120,232,32.21</Stat>
