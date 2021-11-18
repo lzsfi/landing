@@ -51,6 +51,18 @@ function Landing() {
               <A href="https://docs.saffron.finance/" target="_blank">
                 <Button alternative>Documentation</Button>
               </A>
+              <MobileStatWrapper mt>
+              <StyledText>TVL</StyledText>
+              <StyledText><Span>${tvl}</Span></StyledText>
+              </MobileStatWrapper>
+              <MobileStatWrapper>
+              <StyledText>SFI/ETH APR</StyledText>
+              <StyledText><Span>{apr}%</Span></StyledText>
+              </MobileStatWrapper>
+              <MobileStatWrapper>
+              <StyledText>Total supply</StyledText>
+              <StyledText><Span>100,000</Span></StyledText>
+              </MobileStatWrapper>
             </TextWrapper>
             <StatWrapper>
               <Subtitle mr>
@@ -61,7 +73,7 @@ function Landing() {
                 SFI/ETH APR <Stat>{apr}%</Stat>
               </Subtitle>
               <Subtitle>
-                Total Staked <Stat>$120,232,32.21</Stat>
+                Total supply <Stat>100,000</Stat>
               </Subtitle>
             </StatWrapper>
           </InfoColumn>
@@ -88,6 +100,9 @@ const Container = styled.div`
 
 const InfoSec = styled.div`
   padding: 160px 0;
+  @media screen and (max-width: 1200px) {
+    padding: 80px 0;
+  }
 `;
 
 const InfoRow = styled.div`
@@ -110,6 +125,18 @@ const InfoColumn = styled.div`
 
 const TextWrapper = styled.div`
   width: 650px;
+  @media screen and (max-width: 668px) {
+    width: 550px;
+  }
+  @media screen and (max-width: 570px) {
+    width: 450px;
+  }
+  @media screen and (max-width: 480px) {
+     width: 400px;
+  }
+  @media screen and (max-width: 443px) {
+     width: 360px;
+  }
 `;
 
 const A = styled.a``;
@@ -142,6 +169,13 @@ const Heading = styled.h1`
   @media screen and (max-width: 1200px) {
     width: 100%;
   }
+  @media screen and (max-width: 586px) {
+    font-size: 38px;
+    margin-bottom: 15px;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 34px;
+  }
 `;
 
 const Subtitle = styled.p`
@@ -149,6 +183,15 @@ const Subtitle = styled.p`
   font-size: 16px;
   line-height: 24px;
   color: #0f1621;
+  @media screen and (max-width: 586px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 484px) {
+    font-size: 13px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 12px;
+  }
   ${(props) =>
     props.mr &&
     css`
@@ -184,3 +227,36 @@ const Button = styled.button`
       margin-left: 25px;
     `}
 `;
+
+
+const MobileStatWrapper = styled.div`
+    height: 60px;
+    background-color: white;
+    border-radius: 10px;
+    flex-basis: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: 20px;
+    ${(props) =>
+      props.mt &&
+      css`
+      margin-top: 70px;
+      `}
+  @media screen and (min-width: 1200px) {
+    display: none;
+  }
+`
+
+const StyledText = styled.p`
+  font-size: 18px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-weight: 500;
+`
+
+const Span = styled.span`
+color: #c44536;
+`

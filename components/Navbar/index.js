@@ -4,9 +4,9 @@ import Link from 'next/link'
 import Axios from "axios";
 import Image from "next/image";
 
+import MobileMenu from "./mobilemenu";
 import Icon from "../../public/saffron.svg";
 
-// data.saffron-finance.usd
 
 function Navbar() {
   const [sfi, setSfi] = useState("");
@@ -27,7 +27,7 @@ function Navbar() {
       <NavbarItems>
         <Items>
           <Image src={Icon} />
-          <SaffronText>saffron</SaffronText>
+          <SaffronText>Saffron</SaffronText>
           <Navigation>
             <A href="https://gov.saffron.finance/" target="_blank">
             <NavItem>Governance</NavItem>
@@ -44,6 +44,7 @@ function Navbar() {
           </Navigation>
         </Items>
         <Items>
+          <MobileMenu/>
           <Price>{sfi}</Price>
           <A href="https://app.saffron.finance/" target="_blank">
             <Button>Launch App</Button>
@@ -95,7 +96,7 @@ const Items = styled.div`
 const Navigation = styled.div`
   margin-left: 56px;
   display: flex;
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 851px) {
     display: none;
   }
 `;
@@ -113,6 +114,9 @@ const Price = styled.div`
   color: #0f1621;
   font-weight: 500;
   margin-right: 15px;
+  @media screen and (max-width: 851px) {
+    display: none;
+  }
 `;
 
 const A = styled.a``
@@ -130,5 +134,8 @@ const Button = styled.button`
   font-weight: 500;
   &:hover {
     opacity: 0.8;
+  }
+  @media screen and (max-width: 851px) {
+    display: none;
   }
 `;
