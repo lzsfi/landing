@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
-import Link from 'next/link'
+import Link from "next/link";
 import Axios from "axios";
 import Image from "next/image";
 
 import MobileMenu from "./mobilemenu";
+import MenuIcon from "../../public/menu.svg";
 import Icon from "../../public/saffron.svg";
-
 
 function Navbar() {
   const [sfi, setSfi] = useState("");
@@ -20,7 +20,7 @@ function Navbar() {
     });
   };
 
-  getSfi()
+  getSfi();
 
   return (
     <Container>
@@ -30,21 +30,29 @@ function Navbar() {
           <SaffronText>Saffron</SaffronText>
           <Navigation>
             <A href="https://gov.saffron.finance/" target="_blank">
-            <NavItem>Governance</NavItem>
+              <NavItem>Governance</NavItem>
             </A>
             <A href="https://vote.saffron.finance/#/" target="_blank">
-            <NavItem>Vote</NavItem>
+              <NavItem>Vote</NavItem>
             </A>
-            <A href="https://docs.saffron.finance/saffron-finance/saffron-academy" target="_blank">
-            <NavItem>Academy</NavItem>
+            <A
+              href="https://docs.saffron.finance/saffron-finance/saffron-academy"
+              target="_blank"
+            >
+              <NavItem>Academy</NavItem>
             </A>
-            <A href="https://docs.saffron.finance/saffron-finance/whitepaper" target="_blank">
-            <NavItem>Whitepaper</NavItem>
+            <A
+              href="https://docs.saffron.finance/saffron-finance/whitepaper"
+              target="_blank"
+            >
+              <NavItem>Whitepaper</NavItem>
             </A>
           </Navigation>
         </Items>
         <Items>
-          <MobileMenu/>
+          <Div>
+            <Image height={40} width={40} src={MenuIcon}></Image>
+          </Div>
           <Price>{sfi}</Price>
           <A href="https://app.saffron.finance/" target="_blank">
             <Button>Launch App</Button>
@@ -82,7 +90,7 @@ const NavbarItems = styled.div`
   align-items: center;
   @media screen and (max-width: 1200px) {
     margin-left: 25px;
-    margin-right: 25px
+    margin-right: 25px;
   }
 `;
 
@@ -119,7 +127,7 @@ const Price = styled.div`
   }
 `;
 
-const A = styled.a``
+const A = styled.a``;
 
 const Button = styled.button`
   background-color: #0f1621;
@@ -136,6 +144,14 @@ const Button = styled.button`
     opacity: 0.8;
   }
   @media screen and (max-width: 851px) {
+    display: none;
+  }
+`;
+
+
+const Div = styled.div`
+  cursor: pointer;
+  @media screen and (min-width: 851px) {
     display: none;
   }
 `;

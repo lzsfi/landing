@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
-import Link from "next/link";
-import Axios from "axios";
-import Image from "next/image";
 
-import Icon from "../../public/menu.svg";
 
 function MobileMenu() {
   return (
-    <Div>
-      <Image height={40} width={40} src={Icon}></Image>
-    </Div>
-  );
+  <Menu>
+    hi
+  </Menu>
+  )
 }
 
-export default MobileMenu;
+export default MobileMenu
 
-const Div = styled.div`
-  @media screen and (min-width: 851px) {
-    display: none;
-  }
-`;
+const Menu = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: absolute;
+overflow: hidden;
+flex-direction: column;
+width: 100%;
+background-color: white;
+max-height: ${({isOpen}) => {isOpen ? "300px" : "0"}}
+`

@@ -55,11 +55,11 @@ function Landing() {
               <StyledText>TVL</StyledText>
               <StyledText><Span>${tvl}</Span></StyledText>
               </MobileStatWrapper>
-              <MobileStatWrapper>
+              <MobileStatWrapper mnone>
               <StyledText>SFI/ETH APR</StyledText>
               <StyledText><Span>{apr}%</Span></StyledText>
               </MobileStatWrapper>
-              <MobileStatWrapper>
+              <MobileStatWrapper mnone>
               <StyledText>Total supply</StyledText>
               <StyledText><Span>100,000</Span></StyledText>
               </MobileStatWrapper>
@@ -103,6 +103,9 @@ const InfoSec = styled.div`
   @media screen and (max-width: 1200px) {
     padding: 80px 0;
   }
+  @media screen and (max-height: 883px) {
+    padding: 20px 0;
+  }
 `;
 
 const InfoRow = styled.div`
@@ -136,6 +139,9 @@ const TextWrapper = styled.div`
   }
   @media screen and (max-width: 443px) {
      width: 360px;
+  }
+  @media screen and (max-width: 370px) {
+     width: 300px;
   }
 `;
 
@@ -176,6 +182,9 @@ const Heading = styled.h1`
   @media screen and (max-width: 480px) {
     font-size: 34px;
   }
+  @media screen and (max-width: 370px) {
+    font-size: 24px;
+ }
 `;
 
 const Subtitle = styled.p`
@@ -192,6 +201,9 @@ const Subtitle = styled.p`
   @media screen and (max-width: 400px) {
     font-size: 12px;
   }
+  @media screen and (max-width: 370px) {
+    font-size: 11px;
+ }
   ${(props) =>
     props.mr &&
     css`
@@ -226,6 +238,10 @@ const Button = styled.button`
       background-color: #0f1621;
       margin-left: 25px;
     `}
+  @media screen and (max-width: 370px) {
+      font-size: 14px;
+      width: 130px;
+   }
 `;
 
 
@@ -244,6 +260,13 @@ const MobileStatWrapper = styled.div`
       props.mt &&
       css`
       margin-top: 70px;
+      `}
+    ${(props) =>
+      props.mnone &&
+      css`
+      @media screen and (max-height: 783px) {
+        display: none;
+      }
       `}
   @media screen and (min-width: 1200px) {
     display: none;
