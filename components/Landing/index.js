@@ -60,7 +60,7 @@ function Landing() {
               <StyledText><Span>{apr}%</Span></StyledText>
               </MobileStatWrapper>
               <MobileStatWrapper mnone>
-              <StyledText>Total supply</StyledText>
+              <StyledText>Total Supply</StyledText>
               <StyledText><Span>100,000</Span></StyledText>
               </MobileStatWrapper>
             </TextWrapper>
@@ -73,7 +73,7 @@ function Landing() {
                 SFI/ETH APR <Stat>{apr}%</Stat>
               </Subtitle>
               <Subtitle>
-                Total supply <Stat>100,000</Stat>
+                Total Supply <Stat>100,000</Stat>
               </Subtitle>
             </StatWrapper>
           </InfoColumn>
