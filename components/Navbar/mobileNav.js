@@ -10,16 +10,16 @@ function MobileNav() {
   return (
     <Nav>
       <Logo>
-        <Image src={Icon} />
+        <Image src={Icon} alt="Saffron" />
       </Logo>
       <HamburgerDiv onClick={() => setIsOpen(!isOpen)}>
-        <Image height={40} width={40} src={Hamburger} />
+        <Image height={40} width={40} src={Hamburger} alt="Menu" />
       </HamburgerDiv>
       <Menu isOpen={isOpen}>
-        <NavItem href="https://gov.saffron.finance/">Governance</NavItem>
-        <NavItem href="https://vote.saffron.finance/#/">Vote</NavItem>
-        <NavItem href="https://docs.saffron.finance/saffron-finance/saffron-academy">Academy</NavItem>
-        <NavItem href="https://docs.saffron.finance/">Docs</NavItem>
+        <NavItem href="https://gov.saffron.finance/"  target="_blank" rel="noreferrer">Governance</NavItem>
+        <NavItem href="https://vote.saffron.finance/#/"  target="_blank" rel="noreferrer">Vote</NavItem>
+        <NavItem href="https://docs.saffron.finance/saffron-finance/saffron-academy"  target="_blank" rel="noreferrer">Academy</NavItem>
+        <NavItem href="https://docs.saffron.finance/"  target="_blank" rel="noreferrer">Docs</NavItem>
       </Menu>
     </Nav>
   );

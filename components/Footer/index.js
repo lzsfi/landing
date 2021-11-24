@@ -11,27 +11,27 @@ import Medium from "../../public/medium.svg";
 function Footer() {
   return (
     <Container>
-      <A href="https://discord.com/invite/pDXpXKY" target="_blank">
+      <A href="https://discord.com/invite/pDXpXKY" target="_blank" alt="Discord">
         <Icon>
           <Image src={Discord} />
         </Icon>
       </A>
-      <A href="https://twitter.com/saffronfinance_" target="_blank">
+      <A href="https://twitter.com/saffronfinance_" target="_blank" alt="Twitter">
         <Icon>
           <Image src={Twitter} />
         </Icon>
       </A>
-      <A href="https://t.me/saffronfinance" target="_blank">
+      <A href="https://t.me/saffronfinance" target="_blank" alt="Telegram">
         <Icon>
           <Image src={Telegram} />
         </Icon>
       </A>
-      <A href="https://github.com/saffron-finance/saffron" target="_blank">
+      <A href="https://github.com/saffron-finance/saffron" target="_blank" alt="Github">
         <Icon>
           <Image src={Github} />
         </Icon>
       </A>
-      <A href="https://medium.com/saffron-finance" target="_blank">
+      <A href="https://medium.com/saffron-finance" target="_blank" alt="Medium">
         <Icon>
           <Image src={Medium} />
         </Icon>

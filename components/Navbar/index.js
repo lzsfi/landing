@@ -23,24 +23,24 @@ function Navbar() {
     <Container>
       <NavbarItems>
         <Items>
-          <Image src={Icon} />
+          <Image src={Icon} alt="Saffron" />
           <SaffronText>Saffron</SaffronText>
           <Navigation>
-            <NavItem href="https://gov.saffron.finance/" target="_blank">
+            <NavItem href="https://gov.saffron.finance/" target="_blank" rel="noreferrer">
               Governance
             </NavItem>
-            <NavItem href="https://vote.saffron.finance/#/" target="_blank">
+            <NavItem href="https://vote.saffron.finance/#/" target="_blank" rel="noreferrer">
               Vote
             </NavItem>
             <NavItem
               href="https://docs.saffron.finance/saffron-finance/saffron-academy"
-              target="_blank"
+              target="_blank" rel="noreferrer"
             >
               Academy
             </NavItem>
             <NavItem
               href="https://docs.saffron.finance/saffron-finance/whitepaper"
-              target="_blank"
+              target="_blank" rel="noreferrer"
             >
               Docs
             </NavItem>
@@ -48,7 +48,7 @@ function Navbar() {
         </Items>
         <Items>
           <Price>{sfi}</Price>
-          <a href="https://app.saffron.finance/" target="_blank">
+          <a href="https://app.saffron.finance/" target="_blank" rel="noreferrer">
             <Button>Launch App</Button>
           </a>
         </Items>
