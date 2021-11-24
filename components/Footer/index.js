@@ -1,13 +1,12 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import Image from 'next/image'
+import Image from "next/image";
 
-import Discord from "../../public/discord.svg"
-import Twitter from "../../public/twitter.svg"
-import Telegram from "../../public/telegram.svg"
-import Github from "../../public/github.svg"
-import Medium from "../../public/medium.svg"
-
+import Discord from "../../public/discord.svg";
+import Twitter from "../../public/twitter.svg";
+import Telegram from "../../public/telegram.svg";
+import Github from "../../public/github.svg";
+import Medium from "../../public/medium.svg";
 
 function Footer() {
   return (
@@ -46,26 +45,29 @@ export default Footer;
 // styles
 
 const Container = styled.div`
-display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-height: 85px;
-background-color: #0F1621;
-width: 100%;
-position:absolute;
-margin-right: auto;
-margin-left: auto;
-left:0;
-bottom:0;
-right:0;
+  height: 85px;
+  background-color: #0f1621;
+  width: 100%;
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  @media screen and (max-height: 975px) {
+    position: sticky;
+  }
 `;
 
 const Icon = styled.div`
-padding-right: 15px;
-padding-left: 15px;
-&:hover {
-  opacity: 0.8;
-}
-`
+  padding-right: 15px;
+  padding-left: 15px;
+  &:hover {
+    opacity: 0.8;
+  }
+`;
 
-const A = styled.a``
+const A = styled.a``;

@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
-import Link from "next/link";
 import Axios from "axios";
 import Image from "next/image";
 
-import MobileMenu from "./mobilemenu";
-import MenuIcon from "../../public/menu.svg";
 import Icon from "../../public/saffron.svg";
 
 function Navbar() {
@@ -29,34 +26,31 @@ function Navbar() {
           <Image src={Icon} />
           <SaffronText>Saffron</SaffronText>
           <Navigation>
-            <A href="https://gov.saffron.finance/" target="_blank">
-              <NavItem>Governance</NavItem>
-            </A>
-            <A href="https://vote.saffron.finance/#/" target="_blank">
-              <NavItem>Vote</NavItem>
-            </A>
-            <A
+            <NavItem href="https://gov.saffron.finance/" target="_blank">
+              Governance
+            </NavItem>
+            <NavItem href="https://vote.saffron.finance/#/" target="_blank">
+              Vote
+            </NavItem>
+            <NavItem
               href="https://docs.saffron.finance/saffron-finance/saffron-academy"
               target="_blank"
             >
-              <NavItem>Academy</NavItem>
-            </A>
-            <A
+              Academy
+            </NavItem>
+            <NavItem
               href="https://docs.saffron.finance/saffron-finance/whitepaper"
               target="_blank"
             >
-              <NavItem>Whitepaper</NavItem>
-            </A>
+              Docs
+            </NavItem>
           </Navigation>
         </Items>
         <Items>
-          <Div>
-            <Image height={40} width={40} src={MenuIcon}></Image>
-          </Div>
           <Price>{sfi}</Price>
-          <A href="https://app.saffron.finance/" target="_blank">
+          <a href="https://app.saffron.finance/" target="_blank">
             <Button>Launch App</Button>
-          </A>
+          </a>
         </Items>
       </NavbarItems>
     </Container>
@@ -82,6 +76,9 @@ const Container = styled.div`
   left: 0;
   right: 0;
   text-align: center;
+  @media screen and (max-width: 851px) {
+    display: none;
+  }
 `;
 
 const NavbarItems = styled.div`
@@ -104,15 +101,13 @@ const Items = styled.div`
 const Navigation = styled.div`
   margin-left: 56px;
   display: flex;
-  @media screen and (max-width: 851px) {
-    display: none;
-  }
 `;
 
-const NavItem = styled.div`
+const NavItem = styled.a`
   color: #0f1621;
   font-weight: 400;
   margin-right: 31px;
+  transition: all 0.2s ease-in;
   &:hover {
     color: #c44536;
   }
@@ -122,12 +117,7 @@ const Price = styled.div`
   color: #0f1621;
   font-weight: 500;
   margin-right: 15px;
-  @media screen and (max-width: 851px) {
-    display: none;
-  }
 `;
-
-const A = styled.a``;
 
 const Button = styled.button`
   background-color: #0f1621;
@@ -142,16 +132,5 @@ const Button = styled.button`
   font-weight: 500;
   &:hover {
     opacity: 0.8;
-  }
-  @media screen and (max-width: 851px) {
-    display: none;
-  }
-`;
-
-
-const Div = styled.div`
-  cursor: pointer;
-  @media screen and (min-width: 851px) {
-    display: none;
   }
 `;

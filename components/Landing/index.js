@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import styled, { css } from "styled-components";
 import Image from "next/image";
+import MobileSection from "../Landing/mobilesection"
 
 import SFI from "../../public/sfilanding.svg";
 
@@ -13,18 +14,15 @@ function Landing() {
     Axios.get("https://mainnet-api.saffron.finance/v2/pools").then(
       (response) => {
         setTVL(
-            response.data.stakingPools[0].tvlUsd +
+          response.data.stakingPools[0].tvlUsd +
             response.data.stakingPools[1].tvlUsd +
             response.data.stakingPools[2].tvlUsd +
             response.data.stakingPools[3].tvlUsd +
             response.data.stakingPools[4].tvlUsd +
             response.data.stakingPools[5].tvlUsd
         );
-        setAPR(
-            parseInt(response.data.stakingPools[1].apr)
-        );
+        setAPR(parseInt(response.data.stakingPools[1].apr));
       }
-      
     );
   };
 
@@ -36,6 +34,9 @@ function Landing() {
         <InfoRow>
           <InfoColumn>
             <TextWrapper>
+              <MobileImg>
+                <Image height={80} width={48} src={SFI} />
+              </MobileImg>
               <Heading>
                 A Customized <br /> Risk/Return Protocol
               </Heading>
@@ -51,18 +52,7 @@ function Landing() {
               <A href="https://docs.saffron.finance/" target="_blank">
                 <Button alternative>Documentation</Button>
               </A>
-              <MobileStatWrapper mt>
-              <StyledText>TVL</StyledText>
-              <StyledText><Span>${tvl}</Span></StyledText>
-              </MobileStatWrapper>
-              <MobileStatWrapper mnone>
-              <StyledText>SFI/ETH APR</StyledText>
-              <StyledText><Span>{apr}%</Span></StyledText>
-              </MobileStatWrapper>
-              <MobileStatWrapper mnone>
-              <StyledText>Total Supply</StyledText>
-              <StyledText><Span>100,000</Span></StyledText>
-              </MobileStatWrapper>
+              <MobileSection tvl={tvl} apr={apr}/>
             </TextWrapper>
             <StatWrapper>
               <Subtitle mr>
@@ -94,6 +84,7 @@ const Container = styled.div`
   z-index: 1;
   width: 100%;
   max-width: 1200px;
+  height: 120%;
   margin-right: auto;
   margin-left: auto;
 `;
@@ -102,9 +93,6 @@ const InfoSec = styled.div`
   padding: 160px 0;
   @media screen and (max-width: 1200px) {
     padding: 80px 0;
-  }
-  @media screen and (max-height: 883px) {
-    padding: 20px 0;
   }
 `;
 
@@ -135,13 +123,13 @@ const TextWrapper = styled.div`
     width: 450px;
   }
   @media screen and (max-width: 480px) {
-     width: 400px;
+    width: 400px;
   }
   @media screen and (max-width: 443px) {
-     width: 360px;
+    width: 360px;
   }
   @media screen and (max-width: 370px) {
-     width: 300px;
+    width: 300px;
   }
 `;
 
@@ -165,6 +153,12 @@ const ImgWrapper = styled.div`
   }
 `;
 
+const MobileImg = styled.div`
+  @media screen and (min-width: 1200px) {
+    display: none;
+  }
+`;
+
 const Heading = styled.h1`
   width: 540px;
   margin-bottom: 42px;
@@ -184,7 +178,7 @@ const Heading = styled.h1`
   }
   @media screen and (max-width: 370px) {
     font-size: 24px;
- }
+  }
 `;
 
 const Subtitle = styled.p`
@@ -203,7 +197,7 @@ const Subtitle = styled.p`
   }
   @media screen and (max-width: 370px) {
     font-size: 11px;
- }
+  }
   ${(props) =>
     props.mr &&
     css`
@@ -239,47 +233,8 @@ const Button = styled.button`
       margin-left: 25px;
     `}
   @media screen and (max-width: 370px) {
-      font-size: 14px;
-      width: 130px;
-   }
+    font-size: 14px;
+    width: 130px;
+  }
 `;
 
-
-const MobileStatWrapper = styled.div`
-    height: 60px;
-    background-color: white;
-    border-radius: 10px;
-    flex-basis: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: center;
-    margin-top: 20px;
-    ${(props) =>
-      props.mt &&
-      css`
-      margin-top: 70px;
-      `}
-    ${(props) =>
-      props.mnone &&
-      css`
-      @media screen and (max-height: 783px) {
-        display: none;
-      }
-      `}
-  @media screen and (min-width: 1200px) {
-    display: none;
-  }
-`
-
-const StyledText = styled.p`
-  font-size: 18px;
-  margin-left: 20px;
-  margin-right: 20px;
-  font-weight: 500;
-`
-
-const Span = styled.span`
-color: #c44536;
-`

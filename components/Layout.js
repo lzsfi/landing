@@ -3,6 +3,7 @@ import Head from "next/head";
 import styled from "styled-components";
 
 import Navbar from "./Navbar";
+import MobileNav from "../components/Navbar/mobileNav"
 
 export default function Layout({ children }) {
   return (
@@ -52,6 +53,7 @@ export default function Layout({ children }) {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <Navbar />
+      <MobileNav />
       <Container>{children}</Container>
     </>
   );
