@@ -14,7 +14,7 @@ function Landing() {
     Axios.get("https://mainnet-api.saffron.finance/v2/pools").then(
       (response) => {
         setTVL(
-          response.data.stakingPools[0].tvlUsd +
+            response.data.stakingPools[0].tvlUsd +
             response.data.stakingPools[1].tvlUsd +
             response.data.stakingPools[2].tvlUsd +
             response.data.stakingPools[3].tvlUsd +
@@ -57,7 +57,6 @@ function Landing() {
             <StatWrapper>
               <Subtitle mr>
                 TVL <Stat>${tvl}</Stat>
-                {/* .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") */}
               </Subtitle>
               <Subtitle mr>
                 SFI/ETH APR <Stat>{apr}%</Stat>
