@@ -21,7 +21,7 @@ function MobileSection(props) {
       <MobileStatWrapper>
         <StyledText>Total Supply</StyledText>
         <StyledText>
-          <Span>100,000</Span>
+          <Span>92,122</Span>
         </StyledText>
       </MobileStatWrapper>
     </>

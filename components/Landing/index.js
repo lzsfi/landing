@@ -62,7 +62,7 @@ function Landing() {
                 SFI/ETH APR <Stat>{apr}%</Stat>
               </Subtitle>
               <Subtitle>
-                Total Supply <Stat>100,000</Stat>
+                Total Supply <Stat>92,122</Stat>
               </Subtitle>
             </StatWrapper>
           </InfoColumn>

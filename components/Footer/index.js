@@ -7,6 +7,7 @@ import Twitter from "../../public/twitter.svg";
 import Telegram from "../../public/telegram.svg";
 import Github from "../../public/github.svg";
 import Medium from "../../public/medium.svg";
+import Youtube from "../../public/youtube.svg"
 
 function Footer() {
   return (
@@ -34,6 +35,11 @@ function Footer() {
       <A href="https://medium.com/saffron-finance" target="_blank" alt="Medium">
         <Icon>
           <Image src={Medium} />
+        </Icon>
+      </A>
+      <A href="https://www.youtube.com/channel/UCk_ZDXcc9Z56p9HWp7tFArA" target="_blank" alt="Youtube">
+        <Icon>
+          <Image src={Youtube} />
         </Icon>
       </A>
     </Container>
