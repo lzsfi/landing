@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import styled, { css } from "styled-components";
 import Image from "next/image";
-import MobileSection from "../Landing/mobilesection"
+import MobileSection from "../Landing/mobilesection";
 
 import SFI from "../../public/sfilanding.svg";
 
 function Landing() {
   const [tvl, setTVL] = useState();
   const [apr, setAPR] = useState();
+  const [sfiapr, setSFIAPR] = useState();
 
   const getData = () => {
     Axios.get("https://mainnet-api.saffron.finance/v2/pools").then(
@@ -22,11 +23,14 @@ function Landing() {
             response.data.stakingPools[5].tvlUsd
         );
         setAPR(parseInt(response.data.stakingPools[1].apr));
+        setSFIAPR(parseInt(response.data.stakingPools[0].apr));
       }
     );
   };
 
-  getData();
+  useEffect(() => {
+    getData()
+  },[])
 
   return (
     <InfoSec>
@@ -52,17 +56,17 @@ function Landing() {
               <A href="https://docs.saffron.finance/" target="_blank">
                 <Button alternative>Documentation</Button>
               </A>
-              <MobileSection tvl={tvl} apr={apr}/>
+              <MobileSection tvl={tvl} apr={apr} />
             </TextWrapper>
             <StatWrapper>
-              <Subtitle mr>
-                TVL <Stat>${tvl}</Stat>
+              <Subtitle fw500 mr>
+                TVL <Stat>${tvl?.toLocaleString()}</Stat>
               </Subtitle>
-              <Subtitle mr>
+              <Subtitle fw500 mr>
                 SFI/ETH APR <Stat>{apr}%</Stat>
               </Subtitle>
-              <Subtitle>
-                Total Supply <Stat>92,122</Stat>
+              <Subtitle fw500>
+                SFI APR <Stat>{sfiapr}%</Stat>
               </Subtitle>
             </StatWrapper>
           </InfoColumn>
@@ -137,6 +141,7 @@ const A = styled.a``;
 const StatWrapper = styled.div`
   display: flex;
   padding-top: 58px;
+  width: 600px;
   @media screen and (max-width: 1200px) {
     display: none;
   }
@@ -202,6 +207,11 @@ const Subtitle = styled.p`
     css`
       padding-right: 130px;
     `}
+  ${(props) =>
+    props.fw500 &&
+    css`
+      font-weight: 500;
+    `}
 `;
 
 const Stat = styled.span`
@@ -235,5 +245,8 @@ const Button = styled.button`
     font-size: 14px;
     width: 130px;
   }
+  @media screen and (max-width: 290px) {
+    font-size: 13px;
+    width: 120px;
+  }
 `;
-
