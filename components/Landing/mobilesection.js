@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Axios from "axios";
 import styled, { css } from "styled-components";
 
 function MobileSection(props) {
@@ -19,9 +18,9 @@ function MobileSection(props) {
         </StyledText>
       </MobileStatWrapper>
       <MobileStatWrapper>
-        <StyledText>Total Supply</StyledText>
+        <StyledText>SFI APR</StyledText>
         <StyledText>
-          <Span>92,122</Span>
+          <Span>{props.sfiapr}%</Span>
         </StyledText>
       </MobileStatWrapper>
     </>

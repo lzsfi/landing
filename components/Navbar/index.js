@@ -39,7 +39,7 @@ function Navbar() {
               Academy
             </NavItem>
             <NavItem
-              href="https://docs.saffron.finance/saffron-finance/whitepaper"
+              href="https://docs.saffron.finance/"
               target="_blank" rel="noreferrer"
             >
               Docs
@@ -120,16 +120,17 @@ const Price = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #0f1621;
+  background-color: #c44536;
   width: 133px;
   height: 45px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   color: #ffffff;
-  font-size: 15px;
-  letter-spacing: 1px;
+  font-size: 16px;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 500;
+  transition: 0.2s;
   &:hover {
     opacity: 0.8;
   }

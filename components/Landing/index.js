@@ -56,7 +56,7 @@ function Landing() {
               <A href="https://docs.saffron.finance/" target="_blank">
                 <Button alternative>Documentation</Button>
               </A>
-              <MobileSection tvl={tvl} apr={apr} />
+              <MobileSection tvl={tvl?.toLocaleString()} apr={apr} sfiapr={sfiapr} />
             </TextWrapper>
             <StatWrapper>
               <Subtitle fw500 mr>
@@ -230,15 +230,16 @@ const Button = styled.button`
   cursor: pointer;
   color: #ffffff;
   font-size: 16px;
-  letter-spacing: 1px;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 500 !important;
+  transition: 0.2s;
   &:hover {
     opacity: 0.8;
   }
   ${(props) =>
     props.alternative &&
     css`
-      background-color: #0f1621;
+      background-color: #545463;
       margin-left: 25px;
     `}
   @media screen and (max-width: 370px) {
