@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
 import Axios from "axios";
 import Image from "next/image";
+import Script from "next/script";
 
 import Icon from "../../public/saffron.svg";
 
 function Navbar() {
   const [sfi, setSfi] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const getSfi = () => {
     Axios.get(
@@ -18,41 +20,83 @@ function Navbar() {
 
   getSfi();
 
+  let menuRef = useRef();
+
+  useEffect(() => {
+    let handler = (event) => {
+      if (!menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+
   return (
-    <Container>
-      <NavbarItems>
-        <Items>
-          <Image src={Icon} alt="Saffron" />
-          <SaffronText>Saffron</SaffronText>
-          <Navigation>
-            <NavItem href="https://gov.saffron.finance/" target="_blank" rel="noreferrer">
-              Governance
-            </NavItem>
-            <NavItem href="https://vote.saffron.finance/#/" target="_blank" rel="noreferrer">
-              Vote
-            </NavItem>
-            <NavItem
-              href="https://academy.saffron.finance/"
-              target="_blank" rel="noreferrer"
+    <>
+      <Script src="https://crypto.com/price/static/widget/index.js"></Script>
+      <Container>
+        <NavbarItems>
+          <Items>
+            <Image src={Icon} alt="Saffron" />
+            <SaffronText>Saffron</SaffronText>
+            <Navigation>
+              <NavItem
+                href="https://gov.saffron.finance/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Governance
+              </NavItem>
+              <NavItem
+                href="https://vote.saffron.finance/#/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Vote
+              </NavItem>
+              <NavItem
+                href="https://academy.saffron.finance/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Academy
+              </NavItem>
+              <NavItem
+                href="https://docs.saffron.finance/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Docs
+              </NavItem>
+            </Navigation>
+          </Items>
+          <Items>
+            <Widget ref={menuRef}>
+              <Price onClick={() => setIsOpen(!isOpen)}>{sfi}</Price>
+              <WidgetBody isOpen={isOpen}>
+                <div
+                  id="crypto-widget-CoinBlocks"
+                  data-transparent="true"
+                  data-design="modern"
+                  data-coins="saffron-finance"
+                ></div>
+              </WidgetBody>
+            </Widget>
+            <a
+              href="https://app.saffron.finance/"
+              target="_blank"
+              rel="noreferrer"
             >
-              Academy
-            </NavItem>
-            <NavItem
-              href="https://docs.saffron.finance/"
-              target="_blank" rel="noreferrer"
-            >
-              Docs
-            </NavItem>
-          </Navigation>
-        </Items>
-        <Items>
-          <Price>{sfi}</Price>
-          <a href="https://app.saffron.finance/" target="_blank" rel="noreferrer">
-            <Button>Launch App</Button>
-          </a>
-        </Items>
-      </NavbarItems>
-    </Container>
+              <Button>Launch App</Button>
+            </a>
+          </Items>
+        </NavbarItems>
+      </Container>
+    </>
   );
 }
 
@@ -116,6 +160,11 @@ const Price = styled.div`
   color: #0f1621;
   font-weight: 500;
   margin-right: 15px;
+  cursor: pointer;
+  transition: 0.4s;
+  &:hover {
+    color: #c44536;
+  }
 `;
 
 const Button = styled.button`
@@ -127,10 +176,26 @@ const Button = styled.button`
   cursor: pointer;
   color: #ffffff;
   font-size: 16px;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-weight: 500;
   transition: 0.2s;
   &:hover {
     opacity: 0.8;
   }
+`;
+
+// Price Tracker
+
+const Widget = styled.div`
+  z-index: 100;
+`;
+
+const WidgetBody = styled.div`
+  position: absolute;
+  margin-left: -140px;
+  width: 220px;
+  height: 220px;
+  background: transparent;
+  border-radius: 5px;
+  visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
 `;
