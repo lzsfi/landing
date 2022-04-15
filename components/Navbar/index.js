@@ -12,7 +12,6 @@ function Navbar() {
     Axios.get(
       "https://api.coingecko.com/api/v3/simple/price?ids=saffron-finance&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true"
     ).then((response) => {
-      console.log(response);
       setSfi("$" + response.data["saffron-finance"].usd);
     });
   };
@@ -33,7 +32,7 @@ function Navbar() {
               Vote
             </NavItem>
             <NavItem
-              href="https://docs.saffron.finance/saffron-finance/saffron-academy"
+              href="https://academy.saffron.finance/"
               target="_blank" rel="noreferrer"
             >
               Academy

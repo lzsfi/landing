@@ -18,7 +18,7 @@ function MobileNav() {
       <Menu isOpen={isOpen}>
         <NavItem href="https://gov.saffron.finance/"  target="_blank" rel="noreferrer">Governance</NavItem>
         <NavItem href="https://vote.saffron.finance/#/"  target="_blank" rel="noreferrer">Vote</NavItem>
-        <NavItem href="https://docs.saffron.finance/saffron-finance/saffron-academy"  target="_blank" rel="noreferrer">Academy</NavItem>
+        <NavItem href="https://academy.saffron.finance/"  target="_blank" rel="noreferrer">Academy</NavItem>
         <NavItem href="https://docs.saffron.finance/"  target="_blank" rel="noreferrer">Docs</NavItem>
       </Menu>
     </Nav>

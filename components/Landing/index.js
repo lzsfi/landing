@@ -42,13 +42,10 @@ function Landing() {
                 <Image height={80} width={48} src={SFI} />
               </MobileImg>
               <Heading>
-                A Customized <br /> Risk/Return Protocol
+              Risk Adjustment for <br /> Decentralized Finance
               </Heading>
               <Subtitle>
-                Saffron Finance is a peer to peer risk exchange protocol. The
-                protocol allows its users (i.e. liquidity providers) to
-                customize their risk and return profiles via the use of SFI pool
-                tranches.
+              Saffron is a peer to peer risk adjustment protocol. Users customize their risk and return profiles by selecting their own degree of exposure to underlying platforms.
               </Subtitle>
               <A href="https://app.saffron.finance/" target="_blank">
                 <Button>Launch App</Button>{" "}
